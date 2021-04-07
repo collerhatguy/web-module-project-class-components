@@ -15,7 +15,7 @@ class App extends React.Component {
       {Todos: [...this.state.Todos, {task: todo, id: Date.now(), completed: false}]}
     )
   }
-  // for deleting comleted todos
+  // for deleting completed todos
   clearCompletedTodos = () => {
     this.setState(
       {Todos: this.state.Todos.filter(todo => {
