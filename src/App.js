@@ -9,7 +9,7 @@ class App extends React.Component {
       Todos: []
     }
   }
-  handleTodo(todo) {
+  handleTodo = (todo) => {
     this.setState(
       {Todos: [...this.state.Todos, {name: todo, id: Date.now(), completed: false}]}
     )
