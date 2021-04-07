@@ -6,12 +6,19 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      Todos: []
+      Todos: [{task: "stuff", id: 1, completed: false}]
     }
   }
   handleTodo = (todo) => {
     this.setState(
-      {Todos: [...this.state.Todos, {name: todo, id: Date.now(), completed: false}]}
+      {Todos: [...this.state.Todos, {task: todo, id: Date.now(), completed: false}]}
+    )
+  }
+  clearCompletedTodos = () => {
+    this.setState(
+      {Todos: this.state.Todos.filter(todo => {
+        return (todo.completed === false);
+      })}
     )
   }
   render() {
@@ -19,7 +26,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todos={this.state.Todos}/>
-        <TodoForm handleTodo={this.handleTodo}/>
+        <TodoForm handleTodo={this.handleTodo} clearTodos={this.clearCompletedTodos}/>
       </div>
     );
   }

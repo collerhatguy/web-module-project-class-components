@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function TodoForm({handleTodo}) {
+export default function TodoForm({handleTodo, clearTodos}) {
     const [todo, setTodo] = useState("")
     return (
         <div>
@@ -13,6 +13,7 @@ export default function TodoForm({handleTodo}) {
                     <input type="text" id="todo" name="todo" onChange={e => {setTodo(e.target.value)}}></input>
                 </label>
                 <button type="submit">Submit</button>
+                <button onClick={() => clearTodos()}>Clear Completed Todos</button>
             </form>
         </div>
     )
