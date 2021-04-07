@@ -9,11 +9,13 @@ class App extends React.Component {
       Todos: [{task: "stuff", id: 1, completed: false}]
     }
   }
+  // for creating new todos
   handleTodo = (todo) => {
     this.setState(
       {Todos: [...this.state.Todos, {task: todo, id: Date.now(), completed: false}]}
     )
   }
+  // for deleting comleted todos
   clearCompletedTodos = () => {
     this.setState(
       {Todos: this.state.Todos.filter(todo => {
@@ -21,11 +23,13 @@ class App extends React.Component {
       })}
     )
   }
+  // for checking a todo
   checkTodo = (checkedTodo) => {
     this.setState({Todos: this.state.Todos.map(todo => {
       if (todo.id == checkedTodo.id) return {...todo, completed: !todo.completed}
       return todo;
     })})
+    console.log(this.state.Todos)
   }
   render() {
     return (
