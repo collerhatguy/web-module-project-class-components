@@ -29,7 +29,6 @@ class App extends React.Component {
       if (todo.id == checkedTodo.id) return {...todo, completed: !todo.completed}
       return todo;
     })})
-    console.log(this.state.Todos)
   }
   render() {
     return (

@@ -1,0 +1,6 @@
+.todo {
+    border: solid .1em black;
+    width: fit-content;
+    padding: .2em;
+    margin: .2em;
+}

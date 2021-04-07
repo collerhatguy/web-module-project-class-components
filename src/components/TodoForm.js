@@ -10,7 +10,7 @@ export default function TodoForm({handleTodo, clearTodos}) {
                 }}>
                 <label for="todo">
                     What needs to be done?
-                    <input type="text" id="todo" name="todo" onChange={e => {setTodo(e.target.value)}}></input>
+                    <input type="text" id="todo" name="todo" onChange={e => {setTodo(e.target.value)}} required></input>
                 </label>
                 <button type="submit">Submit</button>
                 <button onClick={() => clearTodos()}>Clear Completed Todos</button>
