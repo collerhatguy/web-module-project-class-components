@@ -21,11 +21,17 @@ class App extends React.Component {
       })}
     )
   }
+  checkTodo = (checkedTodo) => {
+    this.setState({Todos: this.state.Todos.map(todo => {
+      if (todo.id == checkedTodo.id) return {...todo, completed: !todo.completed}
+      return todo;
+    })})
+  }
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todos={this.state.Todos}/>
+        <TodoList todos={this.state.Todos} checkTodo={this.checkTodo}/>
         <TodoForm handleTodo={this.handleTodo} clearTodos={this.clearCompletedTodos}/>
       </div>
     );
