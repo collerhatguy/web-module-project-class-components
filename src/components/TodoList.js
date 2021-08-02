@@ -6,9 +6,13 @@ import Todo from "./Todo";
 export default function TodoList({todos, checkTodo}) {
     return (
         <div>
-            {todos.map(todo => {
-                return <Todo todo={todo} key={todo.id} checkTodo={() => checkTodo(todo)}/>
-            })}
+            {todos.map(todo =>  
+                <Todo 
+                    todo={todo} 
+                    key={todo.id} 
+                    checkTodo={() => checkTodo(todo)}
+                />
+            )}
         </div>
     )
 }
