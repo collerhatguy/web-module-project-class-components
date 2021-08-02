@@ -1,29 +1,37 @@
-import React, {useState} from 'react'
 
-export default function TodoForm({handleTodo, clearTodos}) {
-    const [todo, setTodo] = useState("")
-    const submit = e => {
-        e.preventDefault()
-        handleTodo(todo)
-        setTodo("")
+import React from 'react'
+
+export default class TodoForm extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            todo: ""
+        }
     }
-    return (
-        <div>
-            <form onSubmit={submit}>
-                <label for="todo">
-                    What needs to be done?
-                    <input 
-                        type="text" 
-                        id="todo" 
-                        name="todo" 
-                        value={todo}
-                        onChange={e => {setTodo(e.target.value)}} 
-                        required 
-                    />
-                </label>
-                <button type="submit">Submit</button>
-                <button onClick={() => clearTodos()}>Clear Completed Todos</button>
-            </form>
-        </div>
-    )
+    render() {
+        const submit = e => {
+            e.preventDefault()
+            this.props.handleTodo(this.state.todo)
+            this.setState({todo: ""})
+        }
+        return (
+            <div>
+                <form onSubmit={submit}>
+                    <label for="todo">
+                        What needs to be done?
+                        <input 
+                            type="text" 
+                            id="todo" 
+                            name="todo" 
+                            value={this.state.todo}
+                            onChange={e => this.setState({todo: e.target.value})} 
+                            required 
+                        />
+                    </label>
+                    <button type="submit">Submit</button>
+                    <button onClick={() => this.props.clearTodos()}>Clear Completed Todos</button>
+                </form>
+            </div>
+        )
+    }
 }
