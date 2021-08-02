@@ -18,16 +18,13 @@ class App extends React.Component {
   // for deleting completed todos
   clearCompletedTodos = () => {
     this.setState(
-      {Todos: this.state.Todos.filter(todo => {
-        return (todo.completed === false);
-      })}
+      {Todos: this.state.Todos.filter(todo => todo.completed === false)}
     )
   }
   // for checking a todo
   checkTodo = (checkedTodo) => {
     this.setState({Todos: this.state.Todos.map(todo => {
-      if (todo.id == checkedTodo.id) return {...todo, completed: !todo.completed}
-      return todo;
+      todo.id == checkedTodo.id ? {...todo, completed: !todo.completed} : todo;
     })})
   }
   render() {
