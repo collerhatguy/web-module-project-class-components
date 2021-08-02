@@ -5,7 +5,7 @@ export default class TodoForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            todo: ""
+            todo: "",
         }
     }
     render() {

@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      Todos: [{task: "stuff", id: 1, completed: false}]
+      Todos: JSON.parse(localStorage.getItem("todos")) || [],
     }
   }
   // for creating new todos
@@ -33,6 +33,9 @@ class App extends React.Component {
     this.setState({Todos: this.state.Todos.map(todo => 
       todo.id === checkedTodo.id ? {...todo, completed: !todo.completed} : todo
     )})
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.Todos !== this.state.Todos) localStorage.setItem("todos", JSON.stringify(this.state.Todos))
   }
   render() {
     return (
