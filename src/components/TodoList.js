@@ -3,12 +3,21 @@
 import React from 'react';
 import Todo from "./Todo";
 
-export default function TodoList({todos, checkTodo}) {
-    return (
-        <div>
-            {todos.map(todo => {
-                return <Todo todo={todo} key={todo.id} checkTodo={() => checkTodo(todo)}/>
-            })}
-        </div>
-    )
+export default class TodoList extends React.Component {
+    constructor() {
+        super()
+    }
+    render() {
+        return (
+            <div>
+                {this.props.todos.map(todo =>  
+                    <Todo 
+                        todo={todo} 
+                        key={todo.id} 
+                        checkTodo={() => this.props.checkTodo(todo)}
+                    />
+                )}
+            </div>
+        )
+    }
 }

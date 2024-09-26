@@ -1,14 +1,20 @@
 import React from 'react'
 import "./Todo.css";
 
-export default function Todo({todo, checkTodo}) {
-    const style = {
-        textDecoration: todo.completed ? "line-through" : "none",
+export default class Todo extends React.Component {
+    constructor() {
+        super()
     }
-    return (
+    render() {
+        const style = {
+            textDecoration: this.props.todo.completed ? "line-through" : "none",
+        }
+        return (
         <div className="todo">
-            <span style={style}>{todo.task}</span>
-            <input type="radio" onClick={checkTodo}></input>
+            <span style={style}>{this.props.todo.task}</span>
+            <input type="radio" onClick={this.props.checkTodo}></input>
         </div>
-    )
+        )
+
+    }
 }
